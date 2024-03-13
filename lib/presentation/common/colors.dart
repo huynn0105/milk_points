@@ -21,5 +21,5 @@ class UIColors {
   static const Color brightBlue = Color(0xFFADD8E6);
   static const Color orange = Color(0xFFf4870b);
   static const Color lightGray = Color(0xFFe0e0e0);
-    static const Color purple = Color(0xFF6e418b);
+  static const Color purple = Color(0xFF6e418b);
 }

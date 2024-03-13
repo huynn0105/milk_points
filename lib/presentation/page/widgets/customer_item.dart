@@ -66,7 +66,7 @@ class _CustomerItem extends StatelessWidget {
                         onChanged: (_) {},
                         activeColor: UIColors.purple,
                       ),
-                      SizedBox(width: 6),
+                      const SizedBox(width: 6),
                       Text(
                         '2023: ',
                         style: UITextStyles.regular(16).copyWith(
@@ -93,14 +93,159 @@ class _CustomerItem extends StatelessWidget {
                     debugPrint('edit tap');
                   },
                 ),
-                // const SizedBox(width: 10),
-                // _ButtonItem(
-                //   image: 'ic_edit',
-                //   iconColor: UIColors.orange,
-                //   onTap: () {
-                //     debugPrint('edit tap');
-                //   },
-                // ),
+                const SizedBox(width: 10),
+                _ButtonItem(
+                  image: 'ic_delete',
+                  onTap: () {},
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CustomerShimmerItem extends StatelessWidget {
+  const _CustomerShimmerItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: UIColors.grey,
+      highlightColor: UIColors.lightBlue,
+      period: const Duration(seconds: 3),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 12,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: UIColors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 18,
+                          color: UIColors.white,
+                        ),
+                        const SizedBox(height: 6),
+                        Container(
+                          height: 15,
+                          color: UIColors.white,
+                        ),
+                        const SizedBox(height: 6),
+                        Container(
+                          height: 15,
+                          color: UIColors.white,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 14,
+                              color: UIColors.white,
+                            ),
+                            const SizedBox(height: 4),
+                            Container(
+                              height: 20,
+                              color: UIColors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 14,
+                              color: UIColors.white,
+                            ),
+                            const SizedBox(height: 4),
+                            Container(
+                              height: 20,
+                              color: UIColors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 14,
+                              color: UIColors.white,
+                            ),
+                            const SizedBox(height: 4),
+                            Container(
+                              height: 20,
+                              color: UIColors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Container(
+                        width: 24,
+                        height: 24,
+                        color: UIColors.white,
+                      ),
+                      const SizedBox(width: 6),
+                      Container(
+                        height: 16,
+                        color: UIColors.white,
+                        width: 100,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 16),
+            Row(
+              children: [
+                _ButtonItem(
+                  image: 'ic_add',
+                  iconColor: UIColors.green,
+                  onTap: () {},
+                ),
                 const SizedBox(width: 10),
                 _ButtonItem(
                   image: 'ic_delete',

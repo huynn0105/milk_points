@@ -1,7 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:milk_points/di/locator.dart';
-import 'package:milk_points/presentation/page/home_page.dart';
 import 'package:milk_points/presentation/routes/routes.dart';
 
 import 'presentation/common/colors.dart';

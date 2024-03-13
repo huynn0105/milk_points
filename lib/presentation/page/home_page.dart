@@ -6,8 +6,10 @@ import 'package:milk_points/presentation/common/buttons.dart';
 import 'package:milk_points/presentation/common/colors.dart';
 import 'package:milk_points/presentation/common/images.dart';
 import 'package:milk_points/presentation/common/loading.dart';
+import 'package:milk_points/presentation/common/shimmer_loading.dart';
 import 'package:milk_points/presentation/common/textstyle.dart';
 import 'package:milk_points/utils/bloc_status.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../common/widget_layout.dart';
 import '../common/textfield.dart';
@@ -87,13 +89,15 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                               shadowColor: UIColors.lightBlue,
                               borderRadius: BorderRadius.circular(8),
                               child: ListView.separated(
-                                itemCount: 1,
+                                itemCount: state.status.isLoading ? 5 : 1,
                                 padding: const EdgeInsets.all(12),
                                 separatorBuilder: (_, __) => const _Divider(),
                                 itemBuilder: (context, index) {
-                                  return _CustomerItem(
-                                    index: index,
-                                  );
+                                  return !state.status.isLoading
+                                      ? _CustomerItem(
+                                          index: index,
+                                        )
+                                      : _CustomerShimmerItem();
                                 },
                               ),
                             ),
@@ -105,7 +109,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                 ],
               ),
               Visibility(
-                visible: state.status.isLoading,
+                visible: false,
                 child: const LoadingWidget.dark(isFullScreen: true),
               ),
             ],
