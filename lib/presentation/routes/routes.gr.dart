@@ -9,7 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:milk_points/presentation/page/home_page.dart' deferred as _i1;
+import 'package:milk_points/presentation/page/home_page/home_page.dart' deferred as _i1;
 
 abstract class $AppRouter extends _i2.RootStackRouter {
   $AppRouter({super.navigatorKey});
