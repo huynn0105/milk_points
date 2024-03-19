@@ -14,7 +14,11 @@ class _CustomerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppSplashButton(
       onTap: () {
-        debugPrint('item tap');
+        context.router.push(
+          CustomerDetailRoute(
+            customer: customer,
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -99,7 +103,9 @@ class _CustomerItem extends StatelessWidget {
                 _ButtonItem(
                   image: 'ic_delete',
                   onTap: () {
-                    context.read<CustomerBloc>().add(DeleteCustomerEvent(customer: customer));
+                    context
+                        .read<CustomerBloc>()
+                        .add(DeleteCustomerEvent(customer: customer));
                   },
                 )
               ],

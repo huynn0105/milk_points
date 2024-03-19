@@ -19,7 +19,7 @@ class WidgetLayout extends StatelessWidget {
             ? EdgeInsets.symmetric(
                 horizontal: constraints.maxWidth >= 1000
                     ? (constraints.maxWidth - 1000) / 2
-                    : 0,
+                    : 20,
               )
             : EdgeInsets.zero;
         return Container(

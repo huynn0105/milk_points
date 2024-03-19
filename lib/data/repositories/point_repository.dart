@@ -7,29 +7,29 @@ import 'package:milk_points/utils/firebase_convert.dart';
 import '../datasources/firebase/customer_firebase_api_service.dart';
 
 class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
-  final CustomerFirebaseService _customerFirebaseService =
-      CustomerFirebaseService.instance;
+  // final CustomerFirebaseService _customerFirebaseService =
+  //     CustomerFirebaseService.instance;
 
   @override
   Future<DataState<List<PointModel>>> getPointsByCustomerId(String customerId) {
     return getStateOfFirebase<List<PointModel>>(request: () async {
-      final snapshot =
-          await _customerFirebaseService.pointCollection(customerId).get();
-      final result = snapshot.docs
-          .map((e) =>
-              PointModel.fromJson(FirebaseUtil.convertObjectToMap(e.data())))
-          .toList();
-      return result;
+      // final snapshot =
+      //     await _customerFirebaseService.pointCollection(customerId).get();
+      // final result = snapshot.docs
+      //     .map((e) =>
+      //         PointModel.fromJson(FirebaseUtil.convertObjectToMap(e.data())))
+      //     .toList();
+      return [];
     });
   }
 
   @override
   Future<DataState<void>> insertPoint(PointModel point) {
     return getStateOfFirebase<void>(
-      request: () {
-        return _customerFirebaseService
-            .pointRef(point.customerId, point.id)
-            .set(point.toJson());
+      request: () async {
+        // return _customerFirebaseService
+        //     .pointRef(point.customerId, point.id)
+        //     .set(point.toJson());
       },
     );
   }
@@ -37,10 +37,10 @@ class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
   @override
   Future<DataState<void>> updatePoint(PointModel point) {
     return getStateOfFirebase<void>(
-      request: () {
-        return _customerFirebaseService
-            .pointRef(point.customerId, point.id)
-            .update(point.toJson());
+      request: () async {
+        // return _customerFirebaseService
+        //     .pointRef(point.customerId, point.id)
+        //     .update(point.toJson());
       },
     );
   }
@@ -48,10 +48,10 @@ class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
   @override
   Future<DataState<void>> deletePoint(PointModel point) {
     return getStateOfFirebase<void>(
-      request: () {
-        return _customerFirebaseService
-            .pointRef(point.customerId, point.id)
-            .delete();
+      request: () async {
+        // return _customerFirebaseService
+        //     .pointRef(point.customerId, point.id)
+        //     .delete();
       },
     );
   }

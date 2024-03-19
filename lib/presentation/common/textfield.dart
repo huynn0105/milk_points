@@ -116,7 +116,7 @@ class UITextFieldOutline extends StatelessWidget {
     this.textStyle,
     this.hintText,
     this.hintTextStyle,
-    this.contentPadding,
+    this.contentPadding = const EdgeInsets.all(16),
     this.textAlign = TextAlign.left,
     this.onChanged,
     this.keyboardType,
@@ -144,7 +144,7 @@ class UITextFieldOutline extends StatelessWidget {
     final textfield = TextField(
       controller: controller,
       focusNode: focusNode,
-      style: textStyle ?? UITextStyles.regular(14),
+      style: textStyle ?? UITextStyles.regular(16),
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       textAlign: textAlign,
@@ -154,7 +154,7 @@ class UITextFieldOutline extends StatelessWidget {
         contentPadding: contentPadding,
         hintText: hintText,
         hintStyle: hintTextStyle ??
-            UITextStyles.regular(14).copyWith(
+            UITextStyles.regular(16).copyWith(
               color: UIColors.gray,
             ),
         filled: true,

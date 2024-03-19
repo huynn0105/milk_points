@@ -15,10 +15,14 @@ class AppRouter extends $AppRouter {
   final List<AutoRoute> routes = [
     AutoRoute(
       page: HomeRoute.page,
-      guards: [],
+      guards: const [],
       path: RoutePath.rootPath,
-      children: [],
+      children: const [],
       initial: true,
+    ),
+    AutoRoute(
+      page: CustomerDetailRoute.page,
+      path: RoutePath.detail,
     ),
   ];
 }

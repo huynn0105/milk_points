@@ -13,6 +13,7 @@ import 'package:milk_points/presentation/common/dialog.dart';
 import 'package:milk_points/presentation/common/images.dart';
 import 'package:milk_points/presentation/common/loading.dart';
 import 'package:milk_points/presentation/common/textstyle.dart';
+import 'package:milk_points/presentation/routes/routes.gr.dart';
 import 'package:milk_points/utils/bloc_status.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:uuid/uuid.dart';
@@ -30,15 +31,7 @@ part './widgets/add_customer_button.dart';
 part './widgets/filter_button.dart';
 
 @RoutePage()
-class HomePage extends StatelessWidget implements AutoRouteWrapper {
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CustomerBloc()..add(CustomerGetDataEvent()),
-      child: this,
-    );
-  }
-
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
@@ -46,6 +39,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       backgroundColor: UIColors.lightBlue,
       body: BlocBuilder<CustomerBloc, CustomerState>(
+        buildWhen: (previous, current) => previous.status != current.status,
         builder: (context, state) {
           return Stack(
             children: [
@@ -84,7 +78,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                 ),
                               ),
                               const Spacer(),
-                              const _FilterButton()
+                              const _FilterButton(),
                             ],
                           ),
                           const SizedBox(height: 16),
@@ -95,7 +89,9 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                               shadowColor: UIColors.lightBlue,
                               borderRadius: BorderRadius.circular(8),
                               child: ListView.separated(
-                                itemCount: state.status.isLoading ? 5 : state.customers.length,
+                                itemCount: state.status.isLoading
+                                    ? 5
+                                    : state.customers.length,
                                 padding: const EdgeInsets.all(12),
                                 separatorBuilder: (_, __) => const _Divider(),
                                 itemBuilder: (context, index) {
