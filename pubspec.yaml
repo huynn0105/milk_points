@@ -45,6 +45,7 @@ dependencies:
   flutter_bloc: ^8.1.4
   shimmer: ^3.0.0
   animated_custom_dropdown: ^3.0.0
+  uuid: ^4.3.3
 
 dev_dependencies:
   flutter_test:

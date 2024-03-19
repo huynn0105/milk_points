@@ -8,32 +8,27 @@ class _FilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: CustomDropdown<Job>(
-        hintText: 'Select job role',
-        items: _list,
+      child: CustomDropdown<FilterCustomer>(
+        initialItem: FilterCustomer.point,
+        items: FilterCustomer.values,
+        headerBuilder: (context, selectedItem) {
+          return Text(
+            selectedItem.description,
+            style: UITextStyles.medium(14).copyWith(color: UIColors.primaryColor),
+          );
+        },
+        listItemBuilder: (context, item, isSelected, onItemSelect) {
+          return Text(
+            item.description,
+            style: UITextStyles.regular(14).copyWith(
+              color: isSelected ? UIColors.primaryColor : null,
+            ),
+          );
+        },
         onChanged: (value) {
           log('changing value to: $value');
         },
       ),
     );
-  }
-}
-
-const List<Job> _list = [
-  Job('Developer', Icons.developer_mode),
-  Job('Designer', Icons.design_services),
-  Job('Consultant', Icons.account_balance),
-  Job('Student', Icons.school),
-];
-
-
-class Job {
-  final String name;
-  final IconData icon;
-  const Job(this.name, this.icon);
-
-  @override
-  String toString() {
-    return name;
   }
 }

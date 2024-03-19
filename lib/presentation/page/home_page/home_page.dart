@@ -2,16 +2,20 @@ import 'dart:developer';
 
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:milk_points/data/models/customer_model.dart';
 import 'package:milk_points/presentation/bloc/customer_bloc/customer_bloc.dart';
 import 'package:milk_points/presentation/common/buttons.dart';
 import 'package:milk_points/presentation/common/colors.dart';
+import 'package:milk_points/presentation/common/dialog.dart';
 import 'package:milk_points/presentation/common/images.dart';
 import 'package:milk_points/presentation/common/loading.dart';
 import 'package:milk_points/presentation/common/textstyle.dart';
 import 'package:milk_points/utils/bloc_status.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../common/widget_layout.dart';
 import '../../common/textfield.dart';
@@ -91,13 +95,14 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                               shadowColor: UIColors.lightBlue,
                               borderRadius: BorderRadius.circular(8),
                               child: ListView.separated(
-                                itemCount: state.status.isLoading ? 5 : 1,
+                                itemCount: state.status.isLoading ? 5 : state.customers.length,
                                 padding: const EdgeInsets.all(12),
                                 separatorBuilder: (_, __) => const _Divider(),
                                 itemBuilder: (context, index) {
                                   return !state.status.isLoading
                                       ? _CustomerItem(
                                           index: index,
+                                          customer: state.customers[index],
                                         )
                                       : const _CustomerShimmerItem();
                                 },

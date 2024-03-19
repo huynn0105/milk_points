@@ -24,7 +24,7 @@ class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
   }
 
   @override
-  Future<void> insertPoint(PointModel point) {
+  Future<DataState<void>> insertPoint(PointModel point) {
     return getStateOfFirebase<void>(
       request: () {
         return _customerFirebaseService
@@ -35,7 +35,7 @@ class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
   }
 
   @override
-  Future<void> updatePoint(PointModel point) {
+  Future<DataState<void>> updatePoint(PointModel point) {
     return getStateOfFirebase<void>(
       request: () {
         return _customerFirebaseService
@@ -46,7 +46,7 @@ class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
   }
 
   @override
-  Future<void> deletePoint(PointModel point) {
+  Future<DataState<void>> deletePoint(PointModel point) {
     return getStateOfFirebase<void>(
       request: () {
         return _customerFirebaseService

@@ -3,24 +3,37 @@ part of 'customer_bloc.dart';
 
 class CustomerState {
   final BlocStatus status;
+  final FilterCustomer filter;
   final List<CustomerModel> customers;
-  final String? message;
+  final String? messageError;
 
   CustomerState({
     this.status = BlocStatus.initial,
     this.customers = const [],
-    this.message,
+    this.messageError,
+    this.filter = FilterCustomer.updateTime,
   });
 
   CustomerState copyWith({
     BlocStatus? status,
     List<CustomerModel>? customers,
-    String? message,
+    String? messageError,
   }) {
     return CustomerState(
       status: status ?? this.status,
       customers: customers ?? this.customers,
-      message: message ?? this.message,
+      messageError: messageError ?? this.messageError,
     );
   }
+}
+
+enum FilterCustomer {
+  point('Top điểm thường'),
+  pointLon('Top điểm lon'),
+  dept('Top nợ'),
+  updateTime('Vừa mới cập nhật'),
+  pointByYear('Mua nhiều nhất trong năm');
+
+  final String description;
+  const FilterCustomer(this.description);
 }

@@ -4,9 +4,11 @@ class _CustomerItem extends StatelessWidget {
   const _CustomerItem({
     super.key,
     required this.index,
+    required this.customer,
   });
 
   final int index;
+  final CustomerModel customer;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,9 @@ class _CustomerItem extends StatelessWidget {
             Expanded(
               child: _Info(
                 index: index,
-                name: 'Nguyễn Nhật Huy',
-                address: 'Hoà Mỹ Đông, Phú Nhiêu',
-                phoneNumber: '090909090',
+                name: customer.name,
+                address: customer.address ?? '',
+                phoneNumber: customer.phoneNumber ?? '',
               ),
             ),
             Expanded(
@@ -35,24 +37,24 @@ class _CustomerItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
                       Expanded(
                         child: _ItemRow(
                           title: 'Điểm',
-                          subTitle: '160',
+                          subTitle: customer.totalPoint.toString(),
                         ),
                       ),
                       Expanded(
                         child: _ItemRow(
                           title: 'Điểm Lon',
-                          subTitle: '10',
+                          subTitle: customer.totalPointLon.toString(),
                         ),
                       ),
                       Expanded(
                         child: _ItemRow(
                           title: 'Nợ',
-                          subTitle: '130 000k',
+                          subTitle: customer.debtAmount.toString(),
                           textColor: UIColors.red,
                         ),
                       ),
@@ -74,7 +76,7 @@ class _CustomerItem extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '100',
+                        customer.totalPointByYear.toString(),
                         style: UITextStyles.medium(16).copyWith(
                           color: UIColors.purple,
                         ),
@@ -96,7 +98,9 @@ class _CustomerItem extends StatelessWidget {
                 const SizedBox(width: 10),
                 _ButtonItem(
                   image: 'ic_delete',
-                  onTap: () {},
+                  onTap: () {
+                    context.read<CustomerBloc>().add(DeleteCustomerEvent(customer: customer));
+                  },
                 )
               ],
             ),

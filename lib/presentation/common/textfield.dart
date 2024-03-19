@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -108,6 +107,7 @@ class UITextFieldOutline extends StatelessWidget {
   final bool readOnly;
   final Color fillColor;
   final int? maxLines;
+  final String? title;
 
   const UITextFieldOutline({
     super.key,
@@ -126,6 +126,7 @@ class UITextFieldOutline extends StatelessWidget {
     this.readOnly = false,
     this.fillColor = UIColors.white,
     this.maxLines,
+    this.title,
   });
 
   @override
@@ -140,7 +141,7 @@ class UITextFieldOutline extends StatelessWidget {
             Radius.circular(8),
           ),
         );
-    return TextField(
+    final textfield = TextField(
       controller: controller,
       focusNode: focusNode,
       style: textStyle ?? UITextStyles.regular(14),
@@ -149,7 +150,6 @@ class UITextFieldOutline extends StatelessWidget {
       textAlign: textAlign,
       onChanged: onChanged,
       readOnly: readOnly,
-      
       decoration: InputDecoration(
         contentPadding: contentPadding,
         hintText: hintText,
@@ -167,5 +167,19 @@ class UITextFieldOutline extends StatelessWidget {
       ),
       maxLines: maxLines,
     );
+    if (title?.isNotEmpty == true) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title!,
+            style: UITextStyles.regular(14),
+          ),
+          const SizedBox(height: 8),
+          textfield,
+        ],
+      );
+    }
+    return textfield;
   }
 }

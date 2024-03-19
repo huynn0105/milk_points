@@ -38,7 +38,6 @@ class DialogProvider {
     Function()? negativeCallback,
     bool barrierDismissible = true,
   }) {
-    if (expiredTokenIsShowing || message.isNotEmpty) return;
     return showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
@@ -264,8 +263,7 @@ class ErrorMsgDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, top: 16, bottom: 20),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 20),
               child: Column(
                 children: [
                   const AppImage.asset(

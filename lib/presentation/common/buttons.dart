@@ -95,9 +95,9 @@ class PrimaryButton extends StatelessWidget {
     this.buttonColor = UIColors.primaryColor,
     this.textColor = UIColors.white,
     this.padding = const EdgeInsets.symmetric(horizontal: 24),
-    this.height = 50,
+    this.height = 45,
     this.width,
-    this.radius = 12,
+    this.radius = 8,
     this.elevation,
   });
 
@@ -207,8 +207,7 @@ class AppOutlinedButton extends StatelessWidget {
           : child ??
               Text(
                 title,
-                style: UITextStyles.medium(16)
-                    .copyWith(color: textColor, height: 1),
+                style: UITextStyles.medium(16).copyWith(color: textColor, height: 1),
               ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:milk_points/utils/data_state.dart';
 
 abstract class PointRepository {
   Future<DataState<List<PointModel>>> getPointsByCustomerId(String customerId);
-  Future<void> insertPoint(PointModel point);
-  Future<void> updatePoint(PointModel point);
-  Future<void> deletePoint(PointModel point);
+  Future<DataState<void>> insertPoint(PointModel point);
+  Future<DataState<void>> updatePoint(PointModel point);
+  Future<DataState<void>> deletePoint(PointModel point);
 }
