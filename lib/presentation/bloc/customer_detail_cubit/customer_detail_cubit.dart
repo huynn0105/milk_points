@@ -24,7 +24,7 @@ class CustomerDetailCubit extends Cubit<CustomerDetailState> {
     } else {
       emit(state.copyWith(
         status: BlocStatus.failure,
-        messageError: result.errorMessage,
+        errorMessage: result.errorMessage,
       ));
     }
   }
@@ -42,7 +42,7 @@ class CustomerDetailCubit extends Cubit<CustomerDetailState> {
     } else {
       emit(state.copyWith(
         status: BlocStatus.failure,
-        messageError: result.errorMessage,
+        errorMessage: result.errorMessage,
       ));
     }
   }
@@ -92,15 +92,38 @@ class CustomerDetailCubit extends Cubit<CustomerDetailState> {
         ),
       );
     }
-    final result = await Future.wait<DataState<void>>(points.map((point) => _pointRepository.insertPoint(point)));
+    final result = await Future.wait<DataState<void>>(
+        points.map((point) => _pointRepository.insertPoint(point)));
     if (result.every((e) => e is DataSuccess)) {
-      emit(state.copyWith(status: BlocStatus.success, points: [...points, ...state.points]));
+      emit(state.copyWith(
+          status: BlocStatus.success, points: [...points, ...state.points]));
     } else {
-      final messageError = result.whereType<DataFailed>().map((e) => e.errorMessage).join("\n");
+      final messageError =
+          result.whereType<DataFailed>().map((e) => e.errorMessage).join("\n");
       emit(state.copyWith(
         status: BlocStatus.failure,
-        messageError: messageError,
+        errorMessage: messageError,
       ));
     }
+  }
+
+  onValueChange({
+    String? username,
+    String? phoneNumber,
+    String? address,
+    String? totalPoint,
+    String? totalPointLon,
+    String? debtAmount,
+    String? totalPointOfYear,
+  }) {
+    emit(state.copyWith(
+      username: username,
+      phoneNumber: phoneNumber,
+      address: address,
+      debtAmount: debtAmount,
+      totalPoint: totalPoint,
+      totalPointLon: totalPointLon,
+      totalPointOfYear: totalPointOfYear,
+    ));
   }
 }

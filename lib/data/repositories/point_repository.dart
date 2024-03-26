@@ -19,7 +19,33 @@ class PointRepositoryImpl extends BaseApiRepository implements PointRepository {
       //     .map((e) =>
       //         PointModel.fromJson(FirebaseUtil.convertObjectToMap(e.data())))
       //     .toList();
-      return [];
+      return [
+        PointModel(
+          id: '',
+          comment: 'Mua sữa',
+          createTime: DateTime.now(),
+          customerId: '',
+          type: PointType.point,
+          value: 22,
+        ),
+        PointModel(
+          id: '',
+          comment: 'Nợ',
+          createTime: DateTime.now(),
+          customerId: '',
+          type: PointType.debt,
+          value: 10000,
+        ),
+        PointModel(
+          id: '',
+          comment:
+              'Mua sữa lon Mua sữa lon Mua sữa lon Mua sữa lon Mua sữa lon Mua sữa lon Mua sữa lon',
+          createTime: DateTime.now(),
+          customerId: '',
+          type: PointType.pointLon,
+          value: 22,
+        ),
+      ];
     });
   }
 

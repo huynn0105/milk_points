@@ -25,7 +25,7 @@ abstract class $AppRouter extends _i3.RootStackRouter {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<CustomerDetailRouteArgs>(
           orElse: () =>
-              CustomerDetailRouteArgs(customer: queryParams.get('customer')));
+              CustomerDetailRouteArgs(customer: null));
       return _i3.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i3.DeferredWidget(

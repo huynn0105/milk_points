@@ -23,8 +23,9 @@ class MyApp extends StatelessWidget {
     debugPrint("runAppMarker: $runAppMarker");
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_)=> CustomerBloc()..add(CustomerGetDataEvent())),
-        BlocProvider(create: (_)=> CustomerDetailCubit()),
+        BlocProvider(
+            create: (_) => CustomerBloc()..add(CustomerGetDataEvent())),
+        BlocProvider(create: (_) => CustomerDetailCubit()),
       ],
       child: MaterialApp.router(
         title: 'Milk Points',

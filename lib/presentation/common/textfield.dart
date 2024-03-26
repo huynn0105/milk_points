@@ -108,6 +108,7 @@ class UITextFieldOutline extends StatelessWidget {
   final Color fillColor;
   final int? maxLines;
   final String? title;
+  final String? initialValue;
 
   const UITextFieldOutline({
     super.key,
@@ -127,6 +128,7 @@ class UITextFieldOutline extends StatelessWidget {
     this.fillColor = UIColors.white,
     this.maxLines,
     this.title,
+    this.initialValue,
   });
 
   @override
@@ -141,7 +143,8 @@ class UITextFieldOutline extends StatelessWidget {
             Radius.circular(8),
           ),
         );
-    final textfield = TextField(
+    final textfield = TextFormField(
+      initialValue: initialValue,
       controller: controller,
       focusNode: focusNode,
       style: textStyle ?? UITextStyles.regular(16),

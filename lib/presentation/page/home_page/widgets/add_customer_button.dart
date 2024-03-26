@@ -8,6 +8,7 @@ class _AddCustomerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryButton(
+      buttonColor: UIColors.green,
       onPressed: () {
         DialogProvider.instance.show(
           context: context,
@@ -172,8 +173,10 @@ class _AddCustomerDialogState extends State<_AddCustomerDialog> {
                             address: addressController.text,
                             phoneNumber: phoneNumberController.text,
                             totalPoint: int.tryParse(pointController.text) ?? 0,
-                            totalPointLon: int.tryParse(pointLonController.text) ?? 0,
-                            totalPointByYear: int.tryParse(pointController.text) ?? 0,
+                            totalPointLon:
+                                int.tryParse(pointLonController.text) ?? 0,
+                            totalPointByYear:
+                                int.tryParse(pointController.text) ?? 0,
                             debtAmount: int.tryParse(debtController.text) ?? 0,
                             updateTime: DateTime.now(),
                             createTime: DateTime.now(),

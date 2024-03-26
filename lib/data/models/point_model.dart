@@ -42,7 +42,10 @@ class PointModel {
 }
 
 enum PointType {
-  point,
-  pointLon,
-  debt;
+  point('Điểm thường'),
+  pointLon('Điểm lon'),
+  debt('Nợ');
+
+  final String description;
+  const PointType(this.description);
 }
